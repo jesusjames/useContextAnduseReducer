@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 
 const todos = [
     {
@@ -25,12 +25,9 @@ const initialState = {
 };
 
 const loginReducer = (state, action) => {
-    console.log('loginReducer');
     switch (action.type) {
         case 'field': {
-            /* const newState = {...state};
-            newState[action.fieldName] = action.payload; */
-            return {...state, [action.fieldName]: action.payload}
+            return { ...state, [action.fieldName]: action.payload }
         }
         case 'login': {
             return { ...state, eror: '', isLoading: true }
@@ -50,18 +47,18 @@ const loginReducer = (state, action) => {
         case 'toggleTodoCompleted': {
             const todos = JSON.parse(JSON.stringify(state.todos));
             const newTodos = todos.map((item) => {
-                if(item.title === action.payload) item.completed = !item.completed
+                if (item.title === action.payload) item.completed = !item.completed
                 return item;
             });
-            return { ...state, todos: newTodos};
+            return { ...state, todos: newTodos };
         }
         default:
             return;
     }
 }
 
-export const StateLoginContext = React.createContext();
-export const DispatchLoginContext = React.createContext();
+const StateLoginContext = React.createContext();
+const DispatchLoginContext = React.createContext();
 
 export const LoginContext = (props) => {
     const [state, dispatch] = useReducer(loginReducer, initialState);
@@ -73,6 +70,22 @@ export const LoginContext = (props) => {
             </StateLoginContext.Provider>
         </DispatchLoginContext.Provider>
     );
+}
+
+export function useStateLoginContext() {
+    const context = React.useContext(StateLoginContext);
+    if (!context) {
+        throw new Error('useStateLoginContext provider is required')
+    }
+    return context;
+}
+
+export function useDispatchLoginContext() {
+    const context = React.useContext(DispatchLoginContext);
+    if (!context) {
+        throw new Error('useDispatchLoginContext provider is required')
+    }
+    return context;
 }
 
 export default LoginContext;

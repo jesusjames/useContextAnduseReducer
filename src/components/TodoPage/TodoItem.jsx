@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { DispatchLoginContext, StateLoginContext } from '../../context/Login';
+import { useDispatchLoginContext, useStateLoginContext } from '../../context/Login';
 
 const TodoItem = ({ title, completed }) => {
 
-    const dispatch = useContext(DispatchLoginContext);
-    const state = useContext(StateLoginContext);
+    const dispatch = useDispatchLoginContext()
+    const state = useStateLoginContext();
 
     const { isLoggedIn } = state;
 

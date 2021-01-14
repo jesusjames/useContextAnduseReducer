@@ -1,7 +1,7 @@
-import {LoginContext, StateLoginContext, DispatchLoginContext} from './LoginContext';
+import {LoginContext, useStateLoginContext, useDispatchLoginContext} from './LoginContext';
 
 export {
     LoginContext,
-    StateLoginContext,
-    DispatchLoginContext
+    useStateLoginContext,
+    useDispatchLoginContext
 }

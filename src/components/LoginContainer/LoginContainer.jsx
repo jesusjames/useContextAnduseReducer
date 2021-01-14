@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { DispatchLoginContext, StateLoginContext } from '../../context/Login';
 import { login } from './../../services/LoginService';
 import { TodoPage } from './../TodoPage';
+import { useDispatchLoginContext, useStateLoginContext } from './../../context/Login/LoginContext';
 
 const LoginContainer = () => {
 
-    const dispatch = useContext(DispatchLoginContext);
-    const state = useContext(StateLoginContext);
+    const dispatch = useDispatchLoginContext()
+    const state = useStateLoginContext();
 
     const { username, password, isLoading, error, isLoggedIn, todos } = state;
 

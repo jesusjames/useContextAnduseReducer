@@ -72,7 +72,7 @@ export const LoginContext = (props) => {
     );
 }
 
-export function useStateLoginContext() {
+export const useStateLoginContext = () => {
     const context = React.useContext(StateLoginContext);
     if (!context) {
         throw new Error('useStateLoginContext provider is required')
@@ -80,7 +80,7 @@ export function useStateLoginContext() {
     return context;
 }
 
-export function useDispatchLoginContext() {
+export const useDispatchLoginContext = () => {
     const context = React.useContext(DispatchLoginContext);
     if (!context) {
         throw new Error('useDispatchLoginContext provider is required')

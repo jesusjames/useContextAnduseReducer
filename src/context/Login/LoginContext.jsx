@@ -60,7 +60,7 @@ const loginReducer = (state, action) => {
 const StateLoginContext = React.createContext();
 const DispatchLoginContext = React.createContext();
 
-export const LoginContext = (props) => {
+export const LoginProvider = (props) => {
     const [state, dispatch] = useReducer(loginReducer, initialState);
 
     return (
@@ -88,4 +88,4 @@ export const useDispatchLoginContext = () => {
     return context;
 }
 
-export default LoginContext;
+export default LoginProvider;

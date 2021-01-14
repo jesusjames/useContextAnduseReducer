@@ -1,12 +1,12 @@
 import './App.css';
-import { LoginContext } from './context/Login';
+import { LoginProvider } from './context/Login';
 import { LoginContainer } from './components/LoginContainer';
 
 function App() {
   return (
-    <LoginContext>
+    <LoginProvider>
       <LoginContainer/>
-    </LoginContext>
+    </LoginProvider>
   );
 }
 
